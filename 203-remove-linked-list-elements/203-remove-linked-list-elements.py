@@ -6,13 +6,10 @@
 class Solution:
     def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
         head_new = ListNode(-1, head)
-        prew_node = head_new
-        node = head_new.next
-        while node is not None:
-            while node is not None and node.val == val:
-                node = node.next
-            prew_node.next = node
-            prew_node = node
-            if node is not None:
+        node = head_new
+        while node.next is not None:
+            if node.next.val == val:
+                node.next = node.next.next
+            else:
                 node = node.next
         return head_new.next
