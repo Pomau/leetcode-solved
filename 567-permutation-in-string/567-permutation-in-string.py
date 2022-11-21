@@ -1,15 +1,16 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        s1_collect = defaultdict(int)
-        for ch in s1:
-            s1_collect[ch] += 1
-        s2_collect = defaultdict(int)
-        for r in range(len(s2)):
-            s2_collect[s2[r]] += 1
-            if r >= len(s1):
-                s2_collect[s2[r - len(s1)]] -= 1
-                if s2_collect[s2[r - len(s1)]] == 0:
-                    del s2_collect[s2[r - len(s1)]]
-            if s1_collect == s2_collect:
+        alf = defaultdict(int)
+        for i in s1:
+            alf[i] += 1
+        for i in range(len(s2)):
+            alf[s2[i]] -= 1
+            if alf[s2[i]] == 0:
+                del alf[s2[i]]
+            if i >= len(s1):
+                alf[s2[i - len(s1)]] += 1
+                if alf[s2[i - len(s1)]] == 0:
+                    del alf[s2[i - len(s1)]]
+            if len(alf) == 0:
                 return True
         return False
