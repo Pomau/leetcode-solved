@@ -5,9 +5,8 @@ class Solution:
         answer = 0
         for r in range(len(s)):
             while s[r] in alf:
-                alf.remove(s[l])
+                alf.discard(s[l])
                 l += 1
             alf.add(s[r])
             answer = max(answer, r - l + 1)
         return answer
-        
