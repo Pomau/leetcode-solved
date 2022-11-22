@@ -1,12 +1,13 @@
 class Solution:
     def numSquares(self, n: int) -> int:
-        dp = [float("inf")] * (n + 1)
-        squares = [i**2 for i in range(1, int(n**0.5) + 1)]
-        dp[0] = 0
-        for i in range(len(dp)):
+        dp = [n + 1] * (n + 1)
+        if n == 0:
+            return 1
+        dp[0] = 1
+        squares = [i**2 for i in range(1, int(n ** 0.5) + 1)]
+        for i in range(n):
             for square in squares:
-                if square +  i > n:
+                if i + square > n:
                     break
-                dp[square + i] = min(dp[i] + 1, dp[square + i])
-        return dp[n]
-        
+                dp[i + square] = min(dp[i + square], dp[i] + 1)
+        return dp[n] - 1
