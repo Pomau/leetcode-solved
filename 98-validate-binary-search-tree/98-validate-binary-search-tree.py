@@ -7,11 +7,8 @@
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         return self.DFS(root, float("-inf"), float("inf"))
-    def DFS(self, root, low, high):
-        if root == None:
+    def DFS(self, root, lower, upper):
+        if root is None:
             return True
-        if not (low < root.val < high):
-            return False
-        return self.DFS(root.left, low, min(high, root.val)) and self.DFS(root.right, max(low, root.val), high)
-            
+        return (lower < root.val < upper) and self.DFS(root.left, lower, min(upper, root.val)) and self.DFS(root.right, max(lower, root.val), upper)
         
