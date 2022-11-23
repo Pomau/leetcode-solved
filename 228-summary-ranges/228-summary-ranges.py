@@ -2,13 +2,12 @@ class Solution:
     def summaryRanges(self, nums: List[int]) -> List[str]:
         answer = []
         l = 0
-        r = 0
-        while l < len(nums):
-            answer.append(str(nums[l]))
-            r = l + 1
-            while r < len(nums) and nums[r] - 1 == nums[r - 1]:
-                r += 1
-            if r - 1 != l:
-                answer[-1] += f"->{nums[r - 1]}"
-            l = r
+        for r in range(1, len(nums) + 1):
+            if len(nums) == r or nums[r] != nums[r - 1] + 1:
+                answer.append(str(nums[l]))
+                if r - l > 1:
+                    answer[-1] += "->" + str(nums[r - 1])
+                if len(nums) != r:
+                    word = str(nums[r])
+                l = r
         return answer
