@@ -1,13 +1,12 @@
 class Solution:
     def shortestToChar(self, s: str, c: str) -> List[int]:
         answer = []
-        r1 = float("inf")
-        r2 = 0
+        r1 = r2 =  float("inf")
         answer = []
-        while r2 < len(s) and s[r2] != c:
-            r2 += 1
+        first = True
         for l in range(len(s)):
-            if l > r2:
+            if l > r2 or first:
+                first = False
                 r1 = r2
                 r2 = l
                 while r2 < len(s) and s[r2] != c:
