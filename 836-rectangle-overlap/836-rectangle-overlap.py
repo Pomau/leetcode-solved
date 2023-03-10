@@ -4,5 +4,4 @@ class Solution:
         right = min(rec1[2], rec2[2])
         up = max(rec1[1], rec2[1])
         bottom = min(rec1[3], rec2[3])
-        print(left, right, up, bottom)
         return left < right and up < bottom
