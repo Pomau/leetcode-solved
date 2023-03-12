@@ -17,7 +17,6 @@ class Solution:
                 candies -= now
         for i in range(num_people):
             if candies > 0:
-                print(candies)
                 if k * num_people+i+1 < candies:
                     arr[i] += k * num_people+i+1
                     candies -= k * num_people+i+1
