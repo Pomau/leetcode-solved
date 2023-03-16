@@ -16,8 +16,6 @@ class Solution:
             return TreeNode(self.inorder[l_in])
         root = TreeNode(self.postorder[r_post - 1])
         k = self.inorder.index(root.val)
-        print(root.val, k, r_in, r_post - (r_in - (k + 1)), r_post - 1)
-        print(root.val, l_in, k, l_post, r_post - (r_in - (k + 1)) - 1)
         root.right = self.dfs(k + 1, r_in, r_post - (r_in - (k + 1)), r_post - 1)
         root.left = self.dfs(l_in, k, l_post, r_post - (r_in - (k + 1)) - 1)
         return root
