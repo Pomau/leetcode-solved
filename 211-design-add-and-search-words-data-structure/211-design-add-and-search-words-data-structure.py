@@ -17,10 +17,7 @@ class WordDictionary:
     
     def _search(self, word, l, node):
         if l >= len(word):
-            print(word, l, node)
-            if "$" in node:
-                return True
-            return False
+            return ("$" in node)
         ans = False
         if word[l] == ".":
             for key, item in node.items():
