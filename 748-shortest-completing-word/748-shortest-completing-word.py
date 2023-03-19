@@ -12,5 +12,5 @@ class Solution:
                     if alf[ch.lower()] == 0:
                         del alf[ch.lower()]
             if len(alf) == 0:
-                ans = min(ans, word, key=lambda x: len(x))
+                ans = min(ans, word, key=len)
         return ans
