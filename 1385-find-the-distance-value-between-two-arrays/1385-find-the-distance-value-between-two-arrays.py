@@ -10,6 +10,6 @@ class Solution:
                 l += 1
             while r < len(arr2) and arr2[r] < el:
                 r += 1
-            if not (0 <= l < len(arr2) and abs(el - arr2[l]) <= d or 0 <= r < len(arr2) and abs(el - arr2[r]) <= d) and (0 <= l < len(arr2) or 0 <= r < len(arr2)):
+            if not (0 <= l < len(arr2) and abs(el - arr2[l]) <= d or 0 <= r < len(arr2) and abs(el - arr2[r]) <= d):
                 ans += 1
         return ans
