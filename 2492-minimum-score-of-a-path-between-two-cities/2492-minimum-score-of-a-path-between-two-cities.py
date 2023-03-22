@@ -6,15 +6,13 @@ class Solution:
             maxn = max(maxn, road[2])
             self.roads[road[0] - 1].append([road[1] - 1, road[2]])
             self.roads[road[1] - 1].append([road[0] - 1, road[2]])
-        for key in self.roads:
-            self.roads[key].sort(key= lambda x: x[1])
-        self.used = [float("inf")] * n
-        self.dfs(0, n - 1, maxn + 1)
-        return self.used[n - 1]
-    def dfs(self, u, target, cost):
-        if self.used[u] <= cost:
-            return True
-        self.used[u] = cost
+        self.used = [False] * n
+        return self.dfs(0)
+    def dfs(self, u):
+        if self.used[u]:
+            return float("inf")
+        self.used[u] = True
+        mink = float("inf")
         for road in self.roads[u]:
-            self.dfs(road[0], target, min(road[1], cost))
-        
+            mink = min(self.dfs(road[0]), mink, road[1])
+        return mink
