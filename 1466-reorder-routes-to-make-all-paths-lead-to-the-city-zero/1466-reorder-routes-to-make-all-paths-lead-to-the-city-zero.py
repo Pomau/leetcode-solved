@@ -10,7 +10,6 @@ class Solution:
         while len(q) > l:
             node, last = q[l]
             l += 1
-            print(node, last)
             for road in roads[node][0]:
                 if road == last:
                     continue
