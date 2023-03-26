@@ -17,7 +17,6 @@ class Solution:
                 prostoe -= 1
             if prostoe > 1:
                 nums[i] -= prostoe
-        print(nums)
         for i in range(1, len(nums)):
             if nums[i] <= nums[i - 1]:
                 return False
