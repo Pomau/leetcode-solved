@@ -1,20 +1,23 @@
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
-        parentheses = {
-            "(": ")",
-            "{": "}",
-            "[": "]"
+
+        # Map of closing bracket to corresponding open bracket
+        bracket_map = {
+            ')': '(',
+            '}': '{',
+            ']': '['
         }
+
         for c in s:
-            if c in parentheses:
+            if c in bracket_map.values():
+                # Push open bracket onto stack
                 stack.append(c)
-            else:
-                if len(stack) == 0 or parentheses[stack[-1]] != c:
+            elif c in bracket_map.keys():
+                # Check that closing bracket matches the most recently
+                # pushed open bracket
+                if not stack or bracket_map[c] != stack.pop():
                     return False
-                stack.pop()
-        if len(stack) > 0:
-            return False
-        return True
-                
-        
+
+        # Return True if the stack is empty, False otherwise
+        return not stack
