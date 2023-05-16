@@ -16,6 +16,6 @@ class Solution:
             node2.next = node1
             node1.next = next_n
             last = node1
-            print(node1.val, node2.val, last, head_new)
+            # print(node1.val, node2.val, last, head_new)
             node = node.next.next
         return head_new.next
