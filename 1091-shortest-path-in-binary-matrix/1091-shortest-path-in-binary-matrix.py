@@ -2,13 +2,12 @@ class Solution:
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
         self.dp = [[float("inf") for i in range(len(grid[0]))] for j in range(len(grid))]
         self.grid = grid
-        q = [[0, 0, 1]]
-        q_l = 0
+        q =deque()
+        q.append([0, 0, 1])
         if self.grid[0][0] == 1:
             return -1
-        while q_l < len(q):
-            x, y, depth = q[q_l]
-            q_l += 1
+        while len(q) > 0:
+            x, y, depth = q.popleft()
             if self.dp[x][y] <= depth:
                 continue
             self.dp[x][y] = depth
